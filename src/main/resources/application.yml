@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: nacos-demo
+nacos:
+  config:
+    server-addr: 192.168.0.60:8848
+    namespace: dev
+    username: nacos
+    password: nacos
+    auto-refresh: true
+    remote-first: true
+    data-id: ${spring.application.name}.properties
+    type: properties
+    bootstrap:
+      enable: true
