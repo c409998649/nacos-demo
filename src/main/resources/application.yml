@@ -1,6 +1,4 @@
 spring:
-  aot:
-    enable: true
   profiles:
     active: dev
   application:
@@ -17,4 +15,3 @@ nacos:
     type: properties
     bootstrap:
       enable: true
-version: 1.0.0

@@ -1,13 +1,11 @@
 package com.chen.nacos;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Properties;
 
 /**
  * @author chenzhiying
@@ -19,19 +17,19 @@ import java.util.Properties;
 @RequiredArgsConstructor
 public class DemoController {
 
-    @Qualifier("globalNacosProperties")
-    private final Properties globalNacosProperties;
+    @NacosValue(value = "${version}", autoRefreshed = true)
+    private String version;
 
     /**
-     *
+     * 测试类
      *
      * @return String
      * @author chenzhiying
      * @date 2023-05-15
      **/
     @GetMapping("/test")
-    private Properties test() {
-        log.info("parameter:{}", globalNacosProperties);
-        return globalNacosProperties;
+    private String test() {
+        log.info("版本号:{}", version);
+        return version;
     }
 }
